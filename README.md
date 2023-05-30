@@ -8,3 +8,7 @@ https://www.notion.so/Creating-Solution-with-DirectXTK-86e036aa990f46b08c9bb863f
 ## 2일차 
 Error Logging and String Conversion  
 https://www.notion.so/Error-Logging-and-String-Conversion-7ae0ddb8720c49b1be4a797215701730?pvs=4
+
+## 3일차  
+Creating a Window  
+https://industrious-billboard-eea.notion.site/Creating-a-Window-38058e7b19de47608765d87862181b80
