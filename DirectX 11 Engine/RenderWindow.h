@@ -2,10 +2,13 @@
 #include "ErrorLogger.h"
 
 using namespace std;
+
+class WindowContainer;
+
 class RenderWindow
 {
 public:
-	bool Initialize(HINSTANCE hInstance, string window_title, string window_class, int width, int height);
+	bool Initialize(WindowContainer * pWindowContainer, HINSTANCE hInstance, string window_title, string window_class, int width, int height);
 	bool ProcessMessages();
 	~RenderWindow();
 
