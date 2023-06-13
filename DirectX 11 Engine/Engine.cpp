@@ -15,28 +15,23 @@ void Engine::Update()
 	while (!keyboard.CharBufferIsEmpty()) 
 	{
 		unsigned char ch = keyboard.ReadChar();
-		string outmsg = "Char : ";
-		outmsg += ch;
-		outmsg += "\n";
-		OutputDebugStringA(outmsg.c_str());
 	}
 
 	while (!keyboard.KeyBufferIsEmpty()) 
 	{
 		KeyboardEvent kbe = keyboard.ReadKey();
 		unsigned char keycode = kbe.GetKeyCode();
-		string outmsg = "";
-		if (kbe.IsPress())
+	}
+	while (!mouse.EventBufferIsEmpty()) 
+	{
+		MouseEvent me = mouse.ReadEvent();
+		if (me.GetType() == MouseEvent::EventType::WheelUp)
 		{
-			outmsg = "Key Press : ";
+			OutputDebugStringA("MouseWheelUp \n");
 		}
-		if (kbe.IsRelease()) 
+		if (me.GetType() == MouseEvent::EventType::WheelDown)
 		{
-			outmsg = "Key Release : ";
+			OutputDebugStringA("MouseWheelDown \n");
 		}
-		
-		outmsg += keycode;
-		outmsg += "\n";
-		OutputDebugStringA(outmsg.c_str());
 	}
 }

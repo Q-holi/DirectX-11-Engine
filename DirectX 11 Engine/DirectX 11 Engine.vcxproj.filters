@@ -19,6 +19,12 @@
     <Filter Include="소스 파일\Keyboard">
       <UniqueIdentifier>{aca816a3-1229-436c-b7f8-3f17c8d4be0f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Mouse">
+      <UniqueIdentifier>{7143bee4-43fc-4724-8bfc-285098de705c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Mouse">
+      <UniqueIdentifier>{000c5405-a419-4b3b-87d1-1f4eb92da07f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -45,6 +51,12 @@
     <ClCompile Include="Keyboard\KeyboardClass.cpp">
       <Filter>소스 파일\Keyboard</Filter>
     </ClCompile>
+    <ClCompile Include="Mouse\MouseClass.cpp">
+      <Filter>소스 파일\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse\MouseEvent.cpp">
+      <Filter>소스 파일\Mouse</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StringConverter.h">
@@ -67,6 +79,12 @@
     </ClInclude>
     <ClInclude Include="Keyboard\KeyboardClass.h">
       <Filter>헤더 파일\Keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse\MouseClass.h">
+      <Filter>헤더 파일\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse\MouseEvent.h">
+      <Filter>헤더 파일\Mouse</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,5 +1,8 @@
 #pragma once
 #include "WindowContainer.h"
+
+using namespace std;
+
 class Engine : WindowContainer
 {
 public:
