@@ -2,7 +2,14 @@
 
 bool Engine::Initialize(HINSTANCE hInstance, string window_title, string window_class, int width, int height)
 {
-	return this->render_Window.Initialize(this,hInstance, window_title, window_class, width, height);
+
+	if (!this->render_Window.Initialize(this, hInstance, window_title, window_class, width, height))
+		return false;
+
+	if (!gfx.Initialize(this->render_Window.GetHWND(), width, height))
+		return false;
+
+	return true;
 }
 
 bool Engine::ProcessMessages()
@@ -22,6 +29,7 @@ void Engine::Update()
 		KeyboardEvent kbe = keyboard.ReadKey();
 		unsigned char keycode = kbe.GetKeyCode();
 	}
+	/*
 	while (!mouse.EventBufferIsEmpty()) 
 	{
 		MouseEvent me = mouse.ReadEvent();
@@ -33,5 +41,5 @@ void Engine::Update()
 		{
 			OutputDebugStringA("MouseWheelDown \n");
 		}
-	}
+	}*/
 }

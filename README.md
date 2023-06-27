@@ -17,3 +17,5 @@
 [Keyboard Input](https://industrious-billboard-eea.notion.site/Keyboard-Input-8e1a4d0a698944718243c462820e6158?pvs=4)  
 ## 6일차  notion 정리  
 [Mouse Input](https://industrious-billboard-eea.notion.site/Mouse-Input-58730f92501a470b95823a98c5ad78ea?pvs=4)  
+## 7일차  notion 정리  
+[Initialization - Adapters](https://industrious-billboard-eea.notion.site/Initialization-Adapters-a1c142bba3b94cbf9ad5d6e8f9911e77?pvs=4)  

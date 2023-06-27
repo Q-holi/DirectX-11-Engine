@@ -1,5 +1,25 @@
 #include "WindowContainer.h"
 
+WindowContainer::WindowContainer()
+{
+	static bool raw_input_initialized = false;
+	if (raw_input_initialized == true)
+	{
+		RAWINPUTDEVICE rid;
+
+		rid.usUsagePage = 0x01;
+		rid.usUsage = 0x02;
+		rid.dwFlags = 0;
+		rid.hwndTarget = 0;
+
+		if (RegisterRawInputDevices(&rid, 1, sizeof(rid) == false))
+		{
+			ErrorLogger::Log(GetLastError(), "Failed to register raw input devices.");
+			exit(-1);
+		}
+	}
+}
+
 LRESULT WindowContainer::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 	switch (uMsg)
@@ -115,6 +135,28 @@ LRESULT WindowContainer::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM 
 			mouse.OnWheelDown(x, y);
 		}
 		break;
+	}
+	//--https://learn.microsoft.com/ko-kr/windows/win32/inputdev/wm-input
+	case WM_INPUT:
+	{
+		UINT dataSize;
+
+		GetRawInputData(reinterpret_cast<HRAWINPUT>(lParam), RID_INPUT, NULL, &dataSize, sizeof(RAWINPUTHEADER));
+		
+		if (dataSize > 0)
+		{
+			unique_ptr<BYTE[]> rawdata = make_unique<BYTE[]>(dataSize);
+			if (GetRawInputData(reinterpret_cast<HRAWINPUT>(lParam), RID_INPUT, rawdata.get(), &dataSize, sizeof(RAWINPUTHEADER)) == dataSize)
+			{
+				RAWINPUT* raw = reinterpret_cast<RAWINPUT*>(rawdata.get());
+				if (raw->header.dwType == RIM_TYPEMOUSE)
+				{
+					mouse.OnMouseMoveRaw(raw->data.mouse.lLastX, raw->data.mouse.lLastY);
+				}
+			}
+		}
+		
+		return DefWindowProc(hwnd, uMsg, wParam, lParam);
 	}
 	default:
 		return DefWindowProc(hwnd, uMsg, wParam, lParam);

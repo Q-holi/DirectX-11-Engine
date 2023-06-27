@@ -36,7 +36,7 @@ bool RenderWindow::Initialize(WindowContainer* pWindowContainer, HINSTANCE hInst
 	SetFocus(this->handle);
 
 
-	return false;
+	return true;
 }
 
 bool RenderWindow::ProcessMessages()
@@ -59,6 +59,11 @@ bool RenderWindow::ProcessMessages()
 		}
 	}
 	return true;
+}
+
+HWND RenderWindow::GetHWND() const
+{
+	return this->handle;
 }
 
 RenderWindow::~RenderWindow()
