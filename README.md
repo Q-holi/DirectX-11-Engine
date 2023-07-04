@@ -19,3 +19,5 @@
 [Mouse Input](https://industrious-billboard-eea.notion.site/Mouse-Input-58730f92501a470b95823a98c5ad78ea?pvs=4)  
 ## 7일차  notion 정리  
 [Initialization - Adapters](https://industrious-billboard-eea.notion.site/Initialization-Adapters-a1c142bba3b94cbf9ad5d6e8f9911e77?pvs=4)  
+## 8일차  notion 정리  
+[Initialization - Create Swapchain / Device / DeviceContext](https://industrious-billboard-eea.notion.site/Initialization-Create-Swapchain-Device-DeviceContext-0fa6bf852b4246259c6e2e387848cb3b?pvs=4)  
