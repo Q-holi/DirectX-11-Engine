@@ -5,6 +5,9 @@ bool Graphics::Initialize(HWND hwnd, int width, int height)
 	if (!InitializeDirectX(hwnd, width, height))
 		return false;
 
+	if (!InitializeShaders())
+		return false;
+
 	return true;
 }
 
@@ -116,3 +119,48 @@ bool Graphics::InitializeDirectX(HWND hwnd, int width, int height)
 	//--랜더링 대상 수, 랜더타겟뷰의 포인터, 깊이 버퍼의 포인터
 	return true;
 }
+
+bool Graphics::InitializeShaders()
+{
+	wstring shaderfolder;
+#pragma region DetermineShaderPath
+	if (IsDebuggerPresent() == TRUE)
+	{
+#ifdef  _DEBUG //--Debug Mode
+#ifdef _WIN64 //--x64
+		shaderfolder = L"x64\\Debug";
+#else //--x86 (Win32)
+		shaderfolder = L"Debug\\";
+#endif
+#else //--Release Mode
+#ifdef _WIN64 //--x64
+		shaderfolder = L"x64\\Release\\";
+#else	//--x86 (Win32)
+		shaderfolder = L"Release\\";
+#endif // _WIN64 //--x64
+
+
+#endif // DEBUG
+	}
+
+		if (!vertexshader.Initialize(this->device, L"x64\\Debug\\VertexShader.cso"))
+			return false;
+
+		//--▼▼▼ https://learn.microsoft.com/ko-kr/windows/win32/api/d3d11/ns-d3d11-d3d11_input_element_desc
+		D3D11_INPUT_ELEMENT_DESC layout[] =
+		{
+			{"POSITION", 0, DXGI_FORMAT::DXGI_FORMAT_R32G32_FLOAT, 0, 0, D3D11_INPUT_CLASSIFICATION::D3D11_INPUT_PER_VERTEX_DATA, 0  },
+		};
+		//--DXGI_FORMAT_R32G32B32_FLOAT 
+		//--▲▲▲ https://learn.microsoft.com/ko-kr/windows/win32/api/dxgiformat/ne-dxgiformat-dxgi_format
+
+		UINT numElements = ARRAYSIZE(layout);
+
+		HRESULT hr = this->device->CreateInputLayout(layout, numElements, this->vertexshader.GetBuffer()->GetBufferPointer(), this->vertexshader.GetBuffer()->GetBufferSize(), this->inputLayout.GetAddressOf());
+		if (FAILED(hr))
+		{
+			ErrorLogger::Log(hr, "Failed to create input layout.");
+			return false;
+		}
+		return true;
+	}

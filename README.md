@@ -21,3 +21,8 @@
 [Initialization - Adapters](https://industrious-billboard-eea.notion.site/Initialization-Adapters-a1c142bba3b94cbf9ad5d6e8f9911e77?pvs=4)  
 ## 8일차  notion 정리  
 [Initialization - Create Swapchain / Device / DeviceContext](https://industrious-billboard-eea.notion.site/Initialization-Create-Swapchain-Device-DeviceContext-0fa6bf852b4246259c6e2e387848cb3b?pvs=4)  
+## 9일차  notion 정리  
+[Create Inputlayout](https://industrious-billboard-eea.notion.site/Create-Inputlayout-22b0d8e4b0e34c80a804347f9463b161?pvs=4)  
+## 10일차  notion 정리  
+[Create Vertex Shader](https://industrious-billboard-eea.notion.site/Create-Vertex-Shader-02bf3f9de2d6424eab0c8e751ad3ddcd?pvs=4)  
+
